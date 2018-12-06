@@ -18,9 +18,9 @@ class RootPageViewController: UIPageViewController, UIPageViewControllerDataSour
         medHis.patient = patient
         let scripts = sb.instantiateViewController(withIdentifier: "Prescriptions") as! Prescriptions
         scripts.patient = patient
-        let appoints = sb.instantiateViewController(withIdentifier: "Appointments") as! Appointments
-        appoints.patient = patient
-        return[patInfo, medHis, scripts, appoints]
+//        let appoints = sb.instantiateViewController(withIdentifier: "Appointments") as! Appointments
+//        appoints.patient = patient
+        return[patInfo, medHis, scripts]
     }()
     
     var myString: String = ""

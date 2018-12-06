@@ -7,51 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class MedicalHistory: UIViewController {
     
-    struct MedHis: Decodable {
-        let sex: String
-        let height: String
-        let weight: String
-        let heartDisease: String
-        let highbPressure: String
-        let stroke: String
-        let pacemaker: String
-        let respiratoryDisease: String
-        let siezures: String
-        let anemia: String
-        let liverDisease: String
-        let kidneyDisease: String
-        let diabetes: String
-        let cancer: String
-        let allergies: String
-        let alcohol: String
-        let smoke: String
-        
-//        init(json: [String: Any]){
-//            sex = json["sex"] as? String ?? ""
-//            height = json["height"] as? String ?? ""
-//            weight = json["weight"] as? String ?? ""
-//            heartDisease = json["heartDisease"] as? String ?? ""
-//            highbPressure = json["highbPressure"] as? String ?? ""
-//            stroke = json["stroke"] as? String ?? ""
-//            pacemaker = json["pacemaker"] as? String ?? ""
-//            respiratoryDisease = json["respiratoryDisease"] as? String ?? ""
-//            siezures = json["siezures"] as? String ?? ""
-//            anemia = json["anemia"] as? String ?? ""
-//            liverDisease = json["liverDisease"] as? String ?? ""
-//            kidneyDisease = json["kidneyDisease"] as? String ?? ""
-//            diabetes = json["diabetes"] as? String ?? ""
-//            cancer = json["cancer"] as? String ?? ""
-//            allergies = json["allergies"] as? String ?? ""
-//            alcohol = json["alcohol"] as? String ?? ""
-//            smoke = json["smoke"] as? String ?? ""
-//        }
-    }
-    
     var patient: Patient!
-    var medicalHistory = [String: Any]()
     
     @IBOutlet var weightLabel: UILabel!
     @IBOutlet var strokeLabel: UILabel!
@@ -73,12 +34,36 @@ class MedicalHistory: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("yoot")
         let jsonUrlString = "https://med-data-92861.herokuapp.com/api/medicalHistory/" + patient._id
+        Alamofire.request(jsonUrlString).responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.weightLabel.text! = json[0]["weight"].string ?? ""
+                self.heightLabel.text! = json[0]["height"].string ?? ""
+                self.sexLabel.text! = json[0]["sex"].string ?? ""
+                self.heartDiseaseLabel.text! = json[0]["heartDisease"].string ?? ""
+                self.respiratoryDiseaseLabel.text! = json[0]["respiratoryDisease"].string ?? ""
+                self.liverDiseaseLabel.text! = json[0]["liverDisease"].string ?? ""
+                self.kidneyDiseaseLabel.text! = json[0]["kidneyDisease"].string ?? ""
+                self.cancerLabel.text! = json[0]["cancer"].string ?? ""
+                self.diabetesLabel.text! = json[0]["diabetes"].string ?? ""
+                self.pacemakerLabel.text! = json[0]["pacemaker"].string ?? ""
+                self.smokesLabel.text! = json[0]["smoke"].string ?? ""
+                self.drinksLabel.text! = json[0]["alcohol"].string ?? ""
+                self.anemiaLabel.text! = json[0]["anemia"].string ?? ""
+                self.highbpressureLabel.text! = json[0]["highbPressure"].string ?? ""
+                self.allergiesLabel.text! = json[0]["allergies"].string ?? ""
+                self.seizuresLabel.text! = json[0]["siezures"].string ?? "N/A"
+                self.strokeLabel.text! = json[0]["stroke"].string ?? ""
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
         
         
         
-        //                let medhis = MedHis(json: json)
         //                self.weightLabel.text! = medhis.weight
         //                self.heightLabel.text! = medhis.height
         //                self.sexLabel.text! = medhis.sex
@@ -96,5 +81,4 @@ class MedicalHistory: UIViewController {
         //                self.allergiesLabel.text! = medhis.allergies
         //                self.seizuresLabel.text! = medhis.siezures
         //                self.strokeLabel.text! = medhis.stroke
-    }
 }
