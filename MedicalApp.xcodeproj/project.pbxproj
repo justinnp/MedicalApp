@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ADC4307FA265B0F01FDEE4A /* Pods_MedicalApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4861FBFE16A5545409A827BC /* Pods_MedicalApp.framework */; };
 		5C064389219A332200DA4727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C064388219A332200DA4727 /* AppDelegate.swift */; };
 		5C06438B219A332200DA4727 /* PatientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06438A219A332200DA4727 /* PatientListController.swift */; };
 		5C06438E219A332200DA4727 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C06438C219A332200DA4727 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4861FBFE16A5545409A827BC /* Pods_MedicalApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C064385219A332200DA4727 /* MedicalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C064388219A332200DA4727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C06438A219A332200DA4727 /* PatientListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListController.swift; sourceTree = "<group>"; };
@@ -44,6 +46,8 @@
 		5CB45DDC21B858F600DEE751 /* MedicalHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalHistory.swift; sourceTree = "<group>"; };
 		5CB45DDE21B8591D00DEE751 /* Prescriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescriptions.swift; sourceTree = "<group>"; };
 		5CB45DE021B8592700DEE751 /* Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointments.swift; sourceTree = "<group>"; };
+		B0BBB9FDF3E55FC544ECA70B /* Pods-MedicalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalApp/Pods-MedicalApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D34786709C0819BDAE8B902A /* Pods-MedicalApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalApp/Pods-MedicalApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +55,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ADC4307FA265B0F01FDEE4A /* Pods_MedicalApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4EB20099D8F66B2322EF6069 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0BBB9FDF3E55FC544ECA70B /* Pods-MedicalApp.debug.xcconfig */,
+				D34786709C0819BDAE8B902A /* Pods-MedicalApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5C06437C219A332200DA4727 = {
 			isa = PBXGroup;
 			children = (
 				5C064387219A332200DA4727 /* MedicalApp */,
 				5C064386219A332200DA4727 /* Products */,
+				4EB20099D8F66B2322EF6069 /* Pods */,
+				7187A823C7B3524B6FFD82A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +121,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		7187A823C7B3524B6FFD82A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4861FBFE16A5545409A827BC /* Pods_MedicalApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C064397219A332300DA4727 /* Build configuration list for PBXNativeTarget "MedicalApp" */;
 			buildPhases = (
+				EF03406E918F33819255DE1D /* [CP] Check Pods Manifest.lock */,
 				5C064381219A332200DA4727 /* Sources */,
 				5C064382219A332200DA4727 /* Frameworks */,
 				5C064383219A332200DA4727 /* Resources */,
+				EA5D60A0681F0644224CAE7E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +199,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EA5D60A0681F0644224CAE7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MedicalApp/Pods-MedicalApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalApp/Pods-MedicalApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF03406E918F33819255DE1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MedicalApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5C064381219A332200DA4727 /* Sources */ = {
@@ -332,6 +407,7 @@
 		};
 		5C064398219A332300DA4727 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0BBB9FDF3E55FC544ECA70B /* Pods-MedicalApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -353,6 +429,7 @@
 		};
 		5C064399219A332300DA4727 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D34786709C0819BDAE8B902A /* Pods-MedicalApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

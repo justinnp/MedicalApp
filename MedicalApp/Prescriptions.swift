@@ -7,36 +7,49 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class Prescriptions: UIViewController {
-    final let baseURL = "https://med-data-92861.herokuapp.com/api/prescriptions/byPatient"
     var patient: Patient!
-    var prescriptions = [String: String]()
+    
+    
+    
+    @IBOutlet var instructionsLabel: UILabel!
+    @IBOutlet var refillDateLabel: UILabel!
+    @IBOutlet var refillLabel: UILabel!
+    @IBOutlet var quantityLabel: UILabel!
+    @IBOutlet var doseLabel: UILabel!
+    @IBOutlet var expirationLabel: UILabel!
+    @IBOutlet var dateprescribedLabel: UILabel!
+    @IBOutlet var rxLabel: UILabel!
+    @IBOutlet var medNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func getJSON(){
-        let endpoint = baseURL + patient._id
-        let url = URL(string: endpoint)
-        guard let getJSON = url else { return }
-        URLSession.shared.dataTask(with: getJSON) { (data, urlResponse, error) in
-            guard let data = data, error == nil, urlResponse != nil else {
-                print("Error in GET of JSON data")
-                return
-            }
-            print("Successful GET")
-            do{
-                let decoder = JSONDecoder()
-                self.prescriptions = try decoder.decode([String: String].self, from: data)
-            }catch {
+        let url = "https://med-data-92861.herokuapp.com/api/prescriptions/byPatient" + patient._id
+        Alamofire.request(url).responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.instructionsLabel.text! = json[0]["instructions"].string ?? ""
+                let refillDate = json[0]["refillDate"].string ?? ""
+                self.refillDateLabel.text! = String(refillDate.prefix(10))
+                let refillNum: Int = json[0]["numRefills"].int!
+                self.refillLabel.text! = String(refillNum)
+                self.doseLabel.text! = json[0]["dose"].string ?? ""
+                let expirDate = json[0]["expirationDate"].string ?? ""
+                self.expirationLabel.text! = String(expirDate.prefix(10))
+                let datePrescr = json[0]["datePrescribed"].string ?? ""
+                self.dateprescribedLabel.text! = String(datePrescr.prefix(10))
+                self.rxLabel.text! = json[0]["Rx"].string ?? ""
+                self.medNameLabel.text! = json[0]["name"].string ?? ""
+                self.quantityLabel.text! = json[0]["quantity"].string ?? ""
+            case .failure(let error):
                 print(error)
             }
-            }.resume()
-        print(prescriptions)
+        })
     }
+
 
     /*
     // MARK: - Navigation
